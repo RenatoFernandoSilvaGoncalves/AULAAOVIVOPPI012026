@@ -1,0 +1,21 @@
+{
+  "name": "aulaaovivoppi012026",
+  "version": "1.0.0",
+  "description": "Primeiros passos no desenvolvimento de uma aplicação web com NodeJS",
+  "main": "index.js",
+  "type": "module", 
+  "scripts": {
+    "start": "node index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenatoFernandoSilvaGoncalves/AULAAOVIVOPPI012026.git"
+  },
+  "author": "Renato Gonçalves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenatoFernandoSilvaGoncalves/AULAAOVIVOPPI012026/issues"
+  },
+  "homepage": "https://github.com/RenatoFernandoSilvaGoncalves/AULAAOVIVOPPI012026#readme"
+}
