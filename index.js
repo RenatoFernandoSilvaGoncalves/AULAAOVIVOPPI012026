@@ -5,7 +5,10 @@ const porta = 3000;
 const host = "0.0.0.0"; // acesso a todas as interfaces de rede no host local
 
 const app = express(); // cria o servidor HTTP
-                  
+
+//definir a biblioteca que irá automaticamente processar os parâmetros da url para nós
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (requisicao, resposta) => {
     resposta.write(`
         <html>
@@ -39,15 +42,19 @@ app.get("/dinheiro", (requisicao, resposta) => {
 //quem solicita um recurso de uma aplicação poderá, via url, especificar parâmetros, de modo a especializar a requisição
 //informar para o servidor o número limite da contagem
 app.get("/contagem", (requisicao, resposta) => {
-    const limite = undefined;
-    if (limite == 'undefined') {
+    const limiteInicial = requisicao.query.limiteInicial;
+    const limiteFinal = requisicao.query.limiteFinal;
+    if (limiteInicial == undefined || limiteFinal == undefined) {
         resposta.write(`<p>Contagem indefinida</p>`);
         resposta.write(`<p>Especifique na url o limite da contagem</p>`);
-        resposta.write(`<p>Exemplo: http://localhost:3000/contagem?limite=10</p>`);
+        resposta.write(`<p>Exemplo: http://localhost:3000/contagem?limiteInicial=10&limiteFinal=20</p>`);
         resposta.end();
     }
     else {
-        resposta.write(``);
+        for (let i = limiteInicial; i <= limiteFinal; i++){
+            resposta.write(`<p>${i}</p>`);    
+        }
+        resposta.write(`<p>Fim da contagem</p>`);
         resposta.end();
     }
 });
